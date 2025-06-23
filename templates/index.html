@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume & Job Match Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>AI Resume & Job Match Analyzer</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="resume">Upload your resume:</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+        <br>
+        <label for="job_description">Job Description:</label>
+        <textarea id="job_description" name="job_description" rows="4" required></textarea>
+        <br>
+        <button type="submit">Analyze</button>
+    </form>
+    {% if feedback and compatibility_score %}
+    <h2>Analysis Results</h2>
+    <p><strong>Feedback:</strong> {{ feedback }}</p>
+    <p><strong>Compatibility Score:</strong> {{ compatibility_score }}</p>
+    {% endif %}
+</body>
+</html>
