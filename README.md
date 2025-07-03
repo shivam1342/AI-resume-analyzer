@@ -1,187 +1,85 @@
 # 🧠 AI Resume & Job Match Analyzer
 
-A simple web app that evaluates a candidate's resume against a job description and provides:
-- ✅ Tailored feedback
-- 📊 A compatibility score (out of 100)
+A lightweight, privacy-first tool that compares your resume to a job description using local LLMs — no internet or API required.
 
-Powered by open-source LLMs via [Ollama](https://ollama.com/) running **Mistral** locally.  
-No internet or OpenAI API required.
+🔒 **Runs fully offline with Mistral via [Ollama](https://ollama.com/)**  
+💡 Built using Flask, PyMuPDF, python-docx, and open-source models.
 
 ---
 
-## ⚙️ Features
+## ✨ Features
 
-- 🔍 Analyze `.pdf`, `.docx`, or `.txt` resumes
-- 🤖 Uses local LLM (`mistral`) via Ollama
-- 💡 Flask web interface with upload + prompt
-- 📄 Resume feedback + compatibility scoring
-
----
-
-## 🛠️ Tech Stack
-
-- Python 3.11+
-- Flask (for web app)
-- Ollama (for LLMs)
-- Mistral (local language model)
-- PyMuPDF (`fitz`) for `.pdf` reading
-- `python-docx` for `.docx` reading
+- 📄 Analyze resumes in `.pdf`, `.docx`, or `.txt` format
+- 🤖 Uses **local mistral model via Ollama** for LLM processing
+- 💬 Gives **natural language feedback** on your resume
+- 📊 Provides a **compatibility score (out of 100)**
+- 💻 Simple and intuitive Flask web interface
 
 ---
 
-## 🚀 How to Run Locally
+## 🧰 Tech Stack
 
-### 1. Clone the repository
+| Layer | Tech |
+|-------|------|
+| Web App | Python 3.11+, Flask |
+| LLM Inference | Ollama + Mistral |
+| Resume Parsing | PyMuPDF, python-docx |
+| UI | HTML, CSS (basic) |
 
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repo
 ```bash
-git clone https://github.com/your-username/ai-resume-job-analyzer.git
-cd ai-resume-job-analyzer
-2. Set up virtual environment
-bash
-Copy
-Edit
+git clone https://github.com/shivam1342/AI-resume-analyzer.git
+cd AI-resume-analyzer
+2. Create and activate virtual environment
+
 python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-3. Install Ollama (if not already)
-Download from: https://ollama.com/download
-Then run:
+source venv/bin/activate  # Linux/macOS
+venv\Scripts\activate     # Windows
 
-bash
-Copy
-Edit
+pip install -r requirements.txt
+
+3. Install Ollama and run Mistral
+Download Ollama, then run:
+
+
 ollama run mistral
-This starts the LLM server locally.
-
-4. Start the Flask app
-Open a new terminal:
-
+4. Launch the app
 bash
 Copy
 Edit
-venv\Scripts\activate
 python app.py
-Visit: http://127.0.0.1:5000
-
-📦 Requirements
-requirements.txt:
-
-txt
-Copy
-Edit
-Flask
-python-docx
-PyMuPDF
-ollama
-Install with:
-
-bash
-Copy
-Edit
-pip install -r requirements.txt
-📸 Screenshot
-
-![Screenshot 2025-06-23 173008](https://github.com/user-attachments/assets/102fd8e2-8425-4ce8-ac5f-853003cb28c0)
+Open in your browser: http://127.0.0.1:5000
 
 
-# 🧠 AI Resume & Job Match Analyzer
+🧠 How It Works
+The app:
 
-A simple web app that evaluates a candidate's resume against a job description and provides:
-- ✅ Tailored feedback
-- 📊 A compatibility score (out of 100)
+Extracts resume text using PyMuPDF or python-docx
 
-Powered by open-source LLMs via [Ollama](https://ollama.com/) running **Mistral** locally.  
-No internet or OpenAI API required.
+Accepts a job description via textarea
 
----
+Sends both to the local mistral LLM with a prompt like:
 
-## ⚙️ Features
 
-- 🔍 Analyze `.pdf`, `.docx`, or `.txt` resumes
-- 🤖 Uses local LLM (`mistral`) via Ollama
-- 💡 Flask web interface with upload + prompt
-- 📄 Resume feedback + compatibility scoring
-
----
-
-## 🛠️ Tech Stack
-
-- Python 3.11+
-- Flask (for web app)
-- Ollama (for LLMs)
-- Mistral (local language model)
-- PyMuPDF (`fitz`) for `.pdf` reading
-- `python-docx` for `.docx` reading
-
----
-
-## 🚀 How to Run Locally
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/your-username/ai-resume-job-analyzer.git
-cd ai-resume-job-analyzer
-2. Set up virtual environment
-bash
-Copy
-Edit
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-3. Install Ollama (if not already)
-Download from: https://ollama.com/download
-Then run:
-
-bash
-Copy
-Edit
-ollama run mistral
-This starts the LLM server locally.
-
-4. Start the Flask app
-Open a new terminal:
-
-bash
-Copy
-Edit
-venv\Scripts\activate
-python app.py
-Visit: http://127.0.0.1:5000
-
-📦 Requirements
-requirements.txt:
-
-txt
-Copy
-Edit
-Flask
-python-docx
-PyMuPDF
-ollama
-Install with:
-
-bash
-Copy
-Edit
-pip install -r requirements.txt
-📸 Screenshot
-
-(Add screenshot of the app running in browser)
-
-🧠 Example Prompt Sent to LLM
-text
-Copy
-Edit
-You are an AI assistant that evaluates resumes against job descriptions.
-
-Resume:
-[Extracted Resume Text]
-
-Job Description:
-[User Provided Job JD]
-
+You are an AI assistant...
 Provide:
-1. Feedback on the resume's strengths and weaknesses for this job.
-2. A compatibility score out of 100.
+1. Resume feedback
+2. Compatibility score out of 100
+Displays output in the UI — no external APIs used!
 
+🧾 Requirements
+nginx
+Copy
+Edit
+Flask
+PyMuPDF
+python-docx
+ollama
+
+🙌 Credits
+Built by Shivam Singh as part of a personal portfolio.
+Feel free to fork, improve, or suggest new features!
