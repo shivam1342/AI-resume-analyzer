@@ -72,9 +72,7 @@ Provide:
 Displays output in the UI — no external APIs used!
 
 🧾 Requirements
-nginx
-Copy
-Edit
+
 Flask
 PyMuPDF
 python-docx
