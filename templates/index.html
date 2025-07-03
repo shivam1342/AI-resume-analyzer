@@ -2,25 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Resume & Job Match Analyzer</title>
     <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; background-color: #f5f5f5; }
+        h1 { color: #333; }
+        form { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1); }
+        textarea, input[type="file"] { width: 100%; margin-bottom: 1rem; }
+        .progress-container { margin-top: 1rem; }
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 20px;
+        }
+        .progress-fill {
+            height: 100%;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            line-height: 20px;
+            background-color: #4caf50;
+        }
+    </style>
 </head>
 <body>
-    <h1>AI Resume & Job Match Analyzer</h1>
+    <h1>🧠 AI Resume & Job Match Analyzer</h1>
     <form action="/" method="post" enctype="multipart/form-data">
-        <label for="resume">Upload your resume:</label>
-        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
-        <br>
-        <label for="job_description">Job Description:</label>
+        <label for="resume">📄 Upload Resume:</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.docx,.txt" required>
+
+        <label for="job_description">📝 Job Description:</label>
         <textarea id="job_description" name="job_description" rows="4" required></textarea>
-        <br>
+
         <button type="submit">Analyze</button>
     </form>
+
     {% if feedback and compatibility_score %}
-    <h2>Analysis Results</h2>
-    <p><strong>Feedback:</strong> {{ feedback }}</p>
-    <p><strong>Compatibility Score:</strong> {{ compatibility_score }}</p>
+    <h2>📊 Analysis Results</h2>
+    <p><strong>Feedback:</strong></p>
+    <p>{{ feedback }}</p>
+
+    <div class="progress-container">
+        <p><strong>Compatibility Score: {{ compatibility_score }}</strong></p>
+        {% set score = compatibility_score|int(0) %}
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ score }}%;">
+                {{ score }}%
+            </div>
+        </div>
+    </div>
     {% endif %}
 </body>
 </html>
