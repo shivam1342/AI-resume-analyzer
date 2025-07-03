@@ -17,6 +17,9 @@ A lightweight, privacy-first tool that compares your resume to a job description
 
 ---
 
+![App Demo](assets/img.png)
+
+
 ## 🧰 Tech Stack
 
 | Layer | Tech |
