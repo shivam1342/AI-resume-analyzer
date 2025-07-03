@@ -48,9 +48,7 @@ Download Ollama, then run:
 
 ollama run mistral
 4. Launch the app
-bash
-Copy
-Edit
+
 python app.py
 Open in your browser: http://127.0.0.1:5000
 
